@@ -34,11 +34,12 @@ export default function QuickActionCard({ item, onClick }: QuickActionCardProps)
   };
 
   return (
-    <div className="bg-white border border-[#D9DEE7] rounded-lg p-3 flex gap-3 hover:border-slate-400 transition-colors">
+    <div className="relative overflow-hidden bg-white border border-[#D9DEE7] rounded-lg p-3 flex gap-3 shadow-[0_1px_3px_rgba(7,25,54,0.08)] transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(7,25,54,0.14)]">
+      <span className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: item.color }} />
       {/* Circular colored icon */}
       <div
         className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-        style={{ backgroundColor: item.color }}
+        style={{ backgroundColor: item.color, boxShadow: `0 0 0 4px ${item.color}26` }}
       >
         {renderIcon()}
       </div>

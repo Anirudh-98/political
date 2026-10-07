@@ -84,7 +84,7 @@ export default function YoutubeHero({ onOpenVideo }: YoutubeHeroProps) {
           <button
             type="button"
             onClick={() => onOpenVideo(featuredVideo)}
-            className="relative flex-1 max-sm:flex-none max-sm:aspect-video min-h-[120px] w-full rounded-md overflow-hidden cursor-pointer group border border-slate-500/70 bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F5D000]"
+            className="relative flex-1 max-sm:flex-none max-sm:aspect-video min-h-[120px] w-full rounded-lg overflow-hidden cursor-pointer group border border-slate-500/70 bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F5D000]"
             aria-label="Play featured rally video"
           >
             <Image
@@ -115,7 +115,7 @@ export default function YoutubeHero({ onOpenVideo }: YoutubeHeroProps) {
                 type="button"
                 key={video.id}
                 onClick={() => onOpenVideo(video)}
-                className="relative h-12 rounded overflow-hidden cursor-pointer group border border-slate-500/70 bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F5D000]"
+                className="relative h-12 rounded-md overflow-hidden cursor-pointer group border border-slate-500/70 bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F5D000]"
                 aria-label={`Watch video: ${video.title}`}
               >
                 <Image
@@ -139,7 +139,7 @@ export default function YoutubeHero({ onOpenVideo }: YoutubeHeroProps) {
             href="https://www.youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="self-start py-1.5 px-4 bg-[#E21E2B] hover:bg-red-700 text-white font-condensed font-bold text-[15px] uppercase tracking-wide rounded flex items-center gap-2 transition-colors"
+            className="self-start py-1.5 px-4 bg-[#E21E2B] hover:bg-red-700 text-white font-condensed font-bold text-[15px] uppercase tracking-wide rounded-md flex items-center gap-2 transition-colors shadow-[0_4px_12px_rgba(226,30,43,0.35)]"
           >
             <span>SUBSCRIBE NOW</span>
             <Bell className="w-4 h-4 fill-white" />

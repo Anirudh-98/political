@@ -1,65 +1,137 @@
 import React from "react";
+import {
+  BadgeCheck,
+  Briefcase,
+  ClipboardCheck,
+  FileText,
+  GraduationCap,
+  HeartHandshake,
+  MapPin,
+  Megaphone,
+  MessageSquare,
+  Search,
+  Send,
+  UsersRound,
+} from "lucide-react";
 import SubPageLayout from "@/components/SubPageLayout";
-import { MapPin, Users, ShieldCheck, Flag } from "lucide-react";
+import {
+  BlockHeading,
+  Callout,
+  CheckList,
+  Panel,
+  PhotoRow,
+  Section,
+  Split,
+  Steps,
+  TileList,
+} from "@/components/PageBlocks";
 
 export default function BoothZonePage() {
   return (
     <SubPageLayout
-      title="Booth Zone — Our Grassroot Strength"
-      subtitle="Minimum 10 trained, verified cadres per polling booth across every assembly constituency."
+      title="Booth Zone"
+      subtitle="Strong Booth. Strong Constituency."
+      image="/images/page-booth-zone.webp"
     >
-      <div className="space-y-6">
-        <div className="bg-white border border-[#D9DEE7] rounded-lg p-5 shadow-xs">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <span className="block text-3xl font-condensed font-black text-[#071936]">
-                5,000+
-              </span>
-              <span className="text-xs font-bold text-slate-600 uppercase">
-                Active Booths
-              </span>
-            </div>
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <span className="block text-3xl font-condensed font-black text-emerald-600">
-                100%
-              </span>
-              <span className="text-xs font-bold text-slate-600 uppercase">
-                Trained & Verified
-              </span>
-            </div>
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <span className="block text-3xl font-condensed font-black text-blue-600">
-                10+
-              </span>
-              <span className="text-xs font-bold text-slate-600 uppercase">
-                Cadres per Booth
-              </span>
-            </div>
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <span className="block text-3xl font-condensed font-black text-red-600">
-                24/7
-              </span>
-              <span className="text-xs font-bold text-slate-600 uppercase">
-                Grievance Hotline
-              </span>
-            </div>
-          </div>
-        </div>
+      <Section>
+        <Split
+          image="/images/sec-booth-survey.webp"
+          alt="Volunteers speaking with a resident at her doorstep"
+        >
+          <Callout icon={MapPin}>
+            <p>
+              The booth is an important point for connecting people with public services,
+              opportunities and community support.
+            </p>
+          </Callout>
+        </Split>
+      </Section>
 
-        <div className="bg-white border border-[#D9DEE7] rounded-lg p-6 shadow-xs">
-          <h2 className="text-lg font-bold font-condensed uppercase text-[#071936] mb-3">
-            Booth Command Structure
-          </h2>
-          <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
-            <p>
-              Each polling booth is organized under a dedicated <strong>Booth Incharge</strong> supported by two <strong>Sector Cadre Leads</strong>, four <strong>Voter Welfare Assistants</strong>, and three <strong>Youth Digital Ambassadors</strong>.
-            </p>
-            <p>
-              This institutional framework guarantees that public issues are resolved swiftly at the local level without administrative bottlenecks.
-            </p>
-          </div>
+      <Section tone="tint" title="Booth-Level Support">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Panel icon={HeartHandshake} title="Public Service" color="#071936">
+            <CheckList
+              columns={1}
+              items={[
+                "Grievance support",
+                "Government scheme guidance",
+                "Citizen assistance",
+                "Service follow-up",
+              ]}
+            />
+          </Panel>
+          <Panel icon={GraduationCap} title="Education & Skills" color="#1D46C4">
+            <CheckList
+              columns={1}
+              items={[
+                "Course information",
+                "Coaching opportunities",
+                "Skill development",
+                "Career support",
+              ]}
+            />
+          </Panel>
+          <Panel icon={Briefcase} title="Employment" color="#08793F">
+            <CheckList
+              columns={1}
+              items={[
+                "Job opportunities",
+                "Resume support",
+                "Interview guidance",
+                "Entrepreneurship support",
+              ]}
+            />
+          </Panel>
+          <Panel icon={UsersRound} title="Community Support" color="#C8141F">
+            <CheckList
+              columns={1}
+              items={[
+                "Youth support",
+                "Women empowerment",
+                "Senior citizen support",
+                "Community awareness",
+              ]}
+            />
+          </Panel>
         </div>
-      </div>
+      </Section>
+
+      <Section>
+        <Split
+          reverse
+          image="/images/sec-booth-team.webp"
+          alt="A team of young booth-level volunteers"
+        >
+          <BlockHeading title="Booth Cadre" tagline="A trained booth cadre is expected to:" />
+          <TileList
+            columns={1}
+            items={[
+              "Understand people's needs",
+              "Coordinate services",
+              "Support government schemes",
+              "Promote education and skill programs",
+              "Maintain peace and harmony",
+              "Build a bridge between people and administration",
+            ]}
+          />
+        </Split>
+      </Section>
+
+      <Section tone="tint" title="Booth-Level Service Flow">
+        <Steps
+          steps={["Identify", "Verify", "Forward", "Follow Up", "Resolve", "Inform", "Record"]}
+          icons={[Search, FileText, Send, MessageSquare, BadgeCheck, Megaphone, ClipboardCheck]}
+        />
+        <div className="mt-8">
+          <PhotoRow
+            photos={[
+              { src: "/images/video-public-service.webp", alt: "Volunteers assisting residents at a help desk", caption: "Public Service" },
+              { src: "/images/video-skill-training.webp", alt: "Young people learning computer skills", caption: "Education & Skills" },
+              { src: "/images/sec-voter-awareness.webp", alt: "A community awareness meeting in a village", caption: "Community Support" },
+            ]}
+          />
+        </div>
+      </Section>
     </SubPageLayout>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Play } from "lucide-react";
+import { Play, Sparkle } from "lucide-react";
 import { YOUTUBE_CHANNEL_BULLETS } from "@/data/mockData";
 
 // Decorative placeholder until the real channel URL is known. It does not encode a link.
@@ -64,7 +64,7 @@ function QrPlaceholder() {
 
 export default function YoutubeChannelCard() {
   return (
-    <div className="@container bg-white border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full">
+    <div className="@container bg-white border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full shadow-[0_1px_3px_rgba(7,25,54,0.08)]">
       <h2 className="panel-title mb-2" style={{ color: "#C8141F" }}>
         OUR YOUTUBE CHANNEL – CONNECT WITH REAL IMPACT
       </h2>
@@ -90,7 +90,7 @@ export default function YoutubeChannelCard() {
         <ul className="col-span-2 order-last @[360px]:col-span-1 @[360px]:order-none justify-self-start flex flex-col justify-between gap-1 text-[13px] text-[#0B1B3A] font-semibold">
           {YOUTUBE_CHANNEL_BULLETS.map((bullet) => (
             <li key={bullet} className="flex items-center gap-2">
-              <span aria-hidden="true" className="text-[10px] leading-none text-[#071936] shrink-0">✦</span>
+              <Sparkle className="w-3 h-3 fill-[#071936] text-[#071936] shrink-0" aria-hidden="true" />
               <span className="leading-tight">{bullet}</span>
             </li>
           ))}

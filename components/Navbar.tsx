@@ -8,26 +8,18 @@ import { Home, ChevronDown, Menu, X } from "lucide-react";
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [programsDropdownOpen, setProgramsDropdownOpen] = useState(false);
-  const [mediaDropdownOpen, setMediaDropdownOpen] = useState(false);
-
-  const programsRef = useRef<HTMLDivElement>(null);
-  const mediaRef = useRef<HTMLDivElement>(null);
+  // Name of the nav item whose dropdown is open, if any
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const desktopNavRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        programsRef.current &&
-        !programsRef.current.contains(event.target as Node)
+        desktopNavRef.current &&
+        !desktopNavRef.current.contains(event.target as Node)
       ) {
-        setProgramsDropdownOpen(false);
-      }
-      if (
-        mediaRef.current &&
-        !mediaRef.current.contains(event.target as Node)
-      ) {
-        setMediaDropdownOpen(false);
+        setOpenMenu(null);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -47,28 +39,33 @@ export default function Navbar() {
       href: "/programs",
       hasDropdown: true,
       dropdownItems: [
-        { label: "Booth Cadre Training", href: "/programs#booth-cadre" },
-        { label: "Citizen Welfare Drive", href: "/programs#welfare" },
-        { label: "Youth Leadership Wing", href: "/programs#youth" },
-        { label: "Women Empowerment Network", href: "/programs#women" },
-        { label: "Constituency Grievance Redressal", href: "/programs#grievance" },
+        { label: "Democratic Welfare Program", href: "/programs/democratic-welfare-program" },
+        { label: "Booth Level Cadre Development", href: "/programs/booth-level-cadre-development" },
+        { label: "Real-Time Public Service", href: "/programs/real-time-public-service" },
+        { label: "Education & Skill Opportunities", href: "/programs/education-skill-opportunities" },
+        { label: "Employment & Entrepreneurship", href: "/programs/employment-entrepreneurship" },
+        { label: "Community Impact & Sustainability", href: "/results" },
       ],
     },
-    { name: "TRAINING & COURSES", href: "/training" },
+    {
+      name: "TRAINING & COURSES",
+      href: "/training",
+      hasDropdown: true,
+      dropdownItems: [
+        { label: "Political Diploma Cadre", href: "/training/political-diploma-cadre" },
+        { label: "Diploma in Journalism", href: "/training/diploma-in-journalism" },
+        { label: "Diploma in Hotel & Event Management", href: "/training/diploma-in-hotel-event-management" },
+        { label: "Diploma in Advanced Digital Marketing", href: "/training/diploma-in-advanced-digital-marketing" },
+        { label: "Diploma in Craft & Painting", href: "/training/diploma-in-craft-painting" },
+        { label: "Computer & IT Courses", href: "/training/computer-it-courses" },
+        { label: "Spoken English & Communication", href: "/training/spoken-english-communication" },
+        { label: "Competitive Exam Coaching", href: "/training/competitive-exam-coaching" },
+      ],
+    },
     { name: "VOTER SERVICES", href: "/voter-services" },
     { name: "BOOTH ZONE", href: "/booth-zone" },
     { name: "RESULTS & IMPACT", href: "/results" },
-    {
-      name: "MEDIA",
-      href: "/media",
-      hasDropdown: true,
-      dropdownItems: [
-        { label: "YouTube Video Channel", href: "/media#videos" },
-        { label: "Press Releases", href: "/media#press" },
-        { label: "Rally & Event Photos", href: "/media#photos" },
-        { label: "Impact Case Studies", href: "/media#cases" },
-      ],
-    },
+    { name: "MEDIA", href: "/media" },
     { name: "CONTACT US", href: "/contact" },
   ];
 
@@ -105,25 +102,19 @@ export default function Navbar() {
             </Link>
 
             {/* Other Nav Items */}
-            <div className="flex items-stretch justify-between flex-1">
+            <div ref={desktopNavRef} className="flex items-stretch justify-between flex-1">
               {navLinks.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive =
+                  pathname === item.href || pathname.startsWith(`${item.href}/`);
 
                 if (item.hasDropdown) {
-                  const isOpen =
-                    item.name === "PROGRAMS"
-                      ? programsDropdownOpen
-                      : mediaDropdownOpen;
-                  const setOpen =
-                    item.name === "PROGRAMS"
-                      ? setProgramsDropdownOpen
-                      : setMediaDropdownOpen;
-                  const ref = item.name === "PROGRAMS" ? programsRef : mediaRef;
+                  const isOpen = openMenu === item.name;
+                  const setOpen = (open: boolean) =>
+                    setOpenMenu(open ? item.name : null);
 
                   return (
                     <div
                       key={item.name}
-                      ref={ref}
                       className="relative flex items-stretch"
                       onMouseEnter={() => setOpen(true)}
                       onMouseLeave={() => setOpen(false)}
@@ -144,13 +135,13 @@ export default function Navbar() {
 
                       {/* Dropdown Menu */}
                       {isOpen && (
-                        <div className="absolute left-0 top-full w-56 bg-[#071936] border border-slate-700 shadow-xl py-1 z-50">
+                        <div className="absolute left-0 top-full w-64 bg-[#071936] border border-slate-600 shadow-xl py-1 z-50">
                           {item.dropdownItems?.map((drop) => (
                             <Link
                               key={drop.label}
                               href={drop.href}
                               onClick={() => setOpen(false)}
-                              className="block px-4 py-2 text-xs text-slate-200 hover:bg-[#E21E2B] hover:text-white font-medium transition-colors"
+                              className="block px-4 py-2 text-[13.5px] text-white hover:bg-[#E21E2B] font-medium transition-colors"
                             >
                               {drop.label}
                             </Link>

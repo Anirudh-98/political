@@ -2,14 +2,60 @@
 
 import React, { useState } from "react";
 import SubPageLayout from "@/components/SubPageLayout";
-import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import {
+  Callout,
+  FeatureGrid,
+  Section,
+  Split,
+  Statement,
+} from "@/components/PageBlocks";
+import {
+  CheckCircle,
+  GraduationCap,
+  HeartHandshake,
+  MapPin,
+  Megaphone,
+  MessageSquare,
+  Send,
+} from "lucide-react";
+
+const CATEGORIES = [
+  { icon: MessageSquare, title: "General Enquiries", text: "For information about our programs and services." },
+  { icon: GraduationCap, title: "Program Enquiries", text: "For information about training, education, skill and employment programs." },
+  { icon: HeartHandshake, title: "Public Service Support", text: "For service requests, grievances and citizen assistance." },
+  { icon: MapPin, title: "Booth Support", text: "For booth-level public service and community support." },
+  { icon: Megaphone, title: "Media & Communication", text: "For media-related information and communication." },
+];
+
+const ENQUIRY_TYPES = [
+  "General Enquiry",
+  "Program Information",
+  "Training & Courses",
+  "Public Service",
+  "Booth Support",
+  "Media",
+  "Other",
+];
+
+const LABEL = "block font-condensed font-bold uppercase tracking-wide text-[14px] text-[#071936] mb-1.5";
+const FIELD =
+  "w-full px-3.5 py-2.5 text-[16px] text-[#0B1B3A] bg-white border border-slate-400 rounded-lg transition-colors duration-200 focus:border-[#071936] focus:ring-2 focus:ring-[#071936]/30 outline-none";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    mobile: "",
+    email: "",
+    location: "",
+    enquiryType: "",
+    message: "",
+  });
+
+  const update =
+    (key: keyof typeof form) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+      setForm((prev) => ({ ...prev, [key]: e.target.value }));
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,118 +64,94 @@ export default function ContactPage() {
 
   return (
     <SubPageLayout
-      title="Contact Us — Political Strategy Hub"
-      subtitle="Reach our central secretariat, constituency helplines, or district liaison desks."
+      title="Contact Us"
+      subtitle="Together, We Serve. Together, We Grow."
+      image="/images/page-contact.webp"
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div className="md:col-span-5 bg-white border border-[#D9DEE7] p-6 rounded-lg shadow-xs space-y-4">
-          <h2 className="text-lg font-bold font-condensed uppercase text-[#071936]">
-            Constituency Secretariat
-          </h2>
-          <p className="text-xs text-slate-600 leading-relaxed">
-            Our central coordinators and booth support helpdesk are available 24/7 to address citizen queries and volunteer enrollments.
-          </p>
-
-          <div className="space-y-3 pt-2 text-xs text-slate-700">
-            <div className="flex items-start gap-3">
-              <MapPin className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
-              <span>Central Secretariat, Sector 4, Civic Tower, New Delhi, India</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Phone className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Toll Free Helpline: 1800 123 4567</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-4 h-4 text-blue-600 shrink-0" />
-              <span>contact@politicalstrategyhub.com</span>
-            </div>
+      <Section>
+        <Split
+          image="/images/sec-contact-listening.webp"
+          alt="A volunteer listening to a couple and noting their request"
+        >
+          <div className="space-y-4">
+            <Callout icon={MessageSquare}>
+              <p>Have a question, suggestion, service request or community concern?</p>
+            </Callout>
+            <Callout icon={HeartHandshake}>
+              <p>Connect with us and share your requirements.</p>
+            </Callout>
           </div>
-        </div>
+        </Split>
+      </Section>
 
-        <div className="md:col-span-7 bg-white border border-[#D9DEE7] p-6 rounded-lg shadow-xs">
-          <h2 className="text-lg font-bold font-condensed uppercase text-[#071936] mb-4">
-            Send Message to Secretariat
-          </h2>
-
+      <Section tone="tint" title="Contact Form">
+        <div className="max-w-3xl bg-white border border-[#D9DEE7] border-t-4 border-t-[#E21E2B] rounded-xl shadow-[0_8px_24px_rgba(7,25,54,0.10)] p-5 sm:p-7">
           {submitted ? (
-            <div className="p-6 text-center bg-slate-50 border border-slate-200 rounded-md">
-              <CheckCircle className="w-12 h-12 text-emerald-600 mx-auto mb-2" />
-              <h3 className="font-condensed font-bold text-base text-[#071936] uppercase">
-                Message Dispatched
+            <div className="py-6 text-center">
+              <CheckCircle className="w-12 h-12 text-[#08793F] mx-auto mb-2" />
+              <h3 className="font-condensed font-extrabold uppercase text-[18px] text-[#071936]">
+                Request Submitted
               </h3>
-              <p className="text-xs text-slate-600 mt-1">
-                Thank you, {name}. Our liaison officer will review and respond shortly.
+              <p className="text-[15px] text-[#0B1B3A] mt-1">
+                Thank you{form.name ? `, ${form.name}` : ""}. We have received your request.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:border-[#071936] outline-none"
-                  placeholder="Your Name"
-                />
+                <label htmlFor="contact-name" className={LABEL}>Name</label>
+                <input id="contact-name" type="text" required autoComplete="name" value={form.name} onChange={update("name")} className={FIELD} />
               </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                    Mobile Number
-                  </label>
-                  <input
-                    type="tel"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:border-[#071936] outline-none"
-                    placeholder="10-digit mobile"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:border-[#071936] outline-none"
-                    placeholder="name@example.com"
-                  />
-                </div>
-              </div>
-
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">
-                  Your Message / Inquiry
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="w-full px-3 py-2 text-sm border border-slate-300 rounded focus:border-[#071936] outline-none resize-none"
-                  placeholder="Describe your inquiry or constituency feedback..."
-                />
+                <label htmlFor="contact-mobile" className={LABEL}>Mobile Number</label>
+                <input id="contact-mobile" type="tel" required autoComplete="tel" value={form.mobile} onChange={update("mobile")} className={FIELD} />
               </div>
-
-              <button
-                type="submit"
-                className="w-full py-2.5 bg-[#071936] hover:bg-[#031126] text-white font-bold font-condensed tracking-wider uppercase text-xs rounded transition flex items-center justify-center gap-2 cursor-pointer shadow-xs"
-              >
-                <Send className="w-3.5 h-3.5" />
-                <span>Submit Message</span>
-              </button>
+              <div>
+                <label htmlFor="contact-email" className={LABEL}>Email Address</label>
+                <input id="contact-email" type="email" autoComplete="email" value={form.email} onChange={update("email")} className={FIELD} />
+              </div>
+              <div>
+                <label htmlFor="contact-location" className={LABEL}>Location / Booth</label>
+                <input id="contact-location" type="text" value={form.location} onChange={update("location")} className={FIELD} />
+              </div>
+              <div className="sm:col-span-2">
+                <label htmlFor="contact-type" className={LABEL}>Select Enquiry Type</label>
+                <select id="contact-type" required value={form.enquiryType} onChange={update("enquiryType")} className={FIELD}>
+                  <option value="" disabled>
+                    Select Enquiry Type
+                  </option>
+                  {ENQUIRY_TYPES.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="sm:col-span-2">
+                <label htmlFor="contact-message" className={LABEL}>Message</label>
+                <textarea id="contact-message" required rows={4} value={form.message} onChange={update("message")} className={`${FIELD} resize-none`} />
+              </div>
+              <div className="sm:col-span-2">
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 py-3 px-7 bg-[#E21E2B] hover:bg-[#C8141F] text-white font-condensed font-bold uppercase tracking-wide text-[16px] rounded-lg transition-colors duration-200 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#E21E2B]"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Submit Request</span>
+                </button>
+              </div>
             </form>
           )}
         </div>
-      </div>
+      </Section>
+
+      <Section title="Contact Categories">
+        <FeatureGrid items={CATEGORIES} />
+      </Section>
+
+      <Statement>
+        We will listen. We will act. We will inform you. We will work for you.
+      </Statement>
     </SubPageLayout>
   );
 }

@@ -1,78 +1,119 @@
 import React from "react";
+import {
+  Briefcase,
+  GraduationCap,
+  HeartHandshake,
+  Landmark,
+  Laptop,
+  MessageSquare,
+  Scale,
+  Sprout,
+  Target,
+  UserRound,
+  Users,
+  UsersRound,
+} from "lucide-react";
 import SubPageLayout from "@/components/SubPageLayout";
-import { GraduationCap, BookOpen, Award, CheckCircle } from "lucide-react";
+import {
+  BlockHeading,
+  ButtonLink,
+  Callout,
+  CourseCards,
+  FeatureGrid,
+  GroupLabel,
+  PhotoRow,
+  Section,
+  Split,
+} from "@/components/PageBlocks";
+import { COURSES, courseHref } from "@/data/courses";
+
+const CORE_AREAS = [
+  { icon: Landmark, title: "Political & Public Service" },
+  { icon: Scale, title: "Public Policy & Governance" },
+  { icon: Users, title: "Leadership & Ethics" },
+  { icon: MessageSquare, title: "Communication Skills" },
+  { icon: HeartHandshake, title: "Social Service" },
+  { icon: UsersRound, title: "Team Building & Coordination" },
+];
+
+const GAINS = [
+  { icon: Users, title: "Leadership Skills" },
+  { icon: MessageSquare, title: "Communication Skills" },
+  { icon: Laptop, title: "Digital Skills" },
+  { icon: UserRound, title: "Personality Development" },
+  { icon: Briefcase, title: "Career Opportunities" },
+  { icon: Sprout, title: "Self Employment" },
+];
 
 export default function TrainingPage() {
-  const modules = [
-    {
-      num: "MOD-01",
-      title: "Booth Analytics & Voter Mapping",
-      desc: "Electoral roll scrutiny, family mapping, voter mood tracking, and demographic issue enumeration.",
-      duration: "12 Hours",
-    },
-    {
-      num: "MOD-02",
-      title: "Door-to-Door Citizen Engagement",
-      desc: "Empathetic listening techniques, public grievance capture, and immediate helpline dispatch.",
-      duration: "16 Hours",
-    },
-    {
-      num: "MOD-03",
-      title: "Digital Cadre App & Real-Time Reporting",
-      desc: "Using the Political Strategy Hub mobile interface for booth status logging and task resolution.",
-      duration: "8 Hours",
-    },
-    {
-      num: "MOD-04",
-      title: "Constituency Development Oversight",
-      desc: "Monitoring local civic projects, rural road quality, water tankers, and government scheme delivery.",
-      duration: "14 Hours",
-    },
-  ];
-
   return (
     <SubPageLayout
-      title="Cadre Training & Academy Courses"
-      subtitle="Standardized field curriculum preparing grassroot volunteers to become disciplined constituency leaders."
+      title="Training & Courses"
+      subtitle="Skill Today. Strong Tomorrow."
+      image="/images/page-training.webp"
     >
-      <div className="space-y-6">
-        <div className="bg-white border border-[#D9DEE7] rounded-lg p-5 shadow-xs">
-          <h2 className="text-lg font-bold font-condensed uppercase text-[#071936] mb-2">
-            Professional Certification Program for Cadres
-          </h2>
-          <p className="text-xs text-slate-600 max-w-3xl leading-relaxed">
-            Every volunteer inducted into the Political Strategy Hub undergoes a rigorous 4-module certification track. Training is conducted both online and through regional weekend workshops led by senior campaign strategists and public administration experts.
-          </p>
-        </div>
+      <Section>
+        <Split
+          image="/images/sec-training-speaking.webp"
+          alt="A trainee practising public speaking in front of her class"
+        >
+          <Callout icon={Target}>
+            <p>
+              Training is designed to build practical skills, leadership, communication, career
+              opportunities and public-service capabilities.
+            </p>
+          </Callout>
+        </Split>
+      </Section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {modules.map((mod) => (
-            <div
-              key={mod.num}
-              className="bg-white border border-[#D9DEE7] rounded-lg p-5 shadow-xs"
-            >
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded">
-                  {mod.num}
-                </span>
-                <span className="text-xs text-slate-500 font-medium">
-                  {mod.duration}
-                </span>
-              </div>
-              <h3 className="font-condensed font-bold text-base text-[#071936] uppercase">
-                {mod.title}
-              </h3>
-              <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                {mod.desc}
-              </p>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
-                <CheckCircle className="w-3.5 h-3.5" />
-                <span>Accredited Certification Provided</span>
-              </div>
-            </div>
-          ))}
+      <Section id="political-diploma" tone="tint">
+        <Split
+          reverse
+          image="/images/video-cadre-training.webp"
+          alt="Trainees attending a cadre training session"
+        >
+          <BlockHeading
+            kicker="Political Diploma Cadre Training"
+            title="Real-Time Training. Real-Life Skills. Real Future."
+          />
+          <Callout icon={GraduationCap}>
+            <p>
+              The Political Diploma Cadre program focuses on developing trained booth-level
+              cadre through structured training and practical experience.
+            </p>
+          </Callout>
+          <div className="mt-6">
+            <ButtonLink href="/training/political-diploma-cadre">View This Course</ButtonLink>
+          </div>
+        </Split>
+        <div className="mt-8">
+          <GroupLabel>Core Training Areas</GroupLabel>
+          <FeatureGrid items={CORE_AREAS} />
         </div>
-      </div>
+      </Section>
+
+      <Section id="courses" eyebrow="Training & Courses" title="All Courses">
+        <CourseCards
+          courses={COURSES.map((course) => ({
+            href: courseHref(course),
+            title: course.name,
+            image: course.image,
+          }))}
+        />
+      </Section>
+
+      <Section tone="tint" title="What Participants Gain">
+        <FeatureGrid items={GAINS} />
+        <div className="mt-8">
+          <PhotoRow
+            photos={[
+              { src: "/images/video-skill-training.webp", alt: "Young people learning computer skills", caption: "Digital Skills" },
+              { src: "/images/sec-results-career.webp", alt: "A young woman at work in an office", caption: "Career Opportunities" },
+              { src: "/images/sec-vision-entrepreneur.webp", alt: "A young woman entrepreneur in her tailoring workshop", caption: "Self Employment" },
+            ]}
+          />
+        </div>
+      </Section>
     </SubPageLayout>
   );
 }

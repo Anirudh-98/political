@@ -17,7 +17,7 @@ export default function PromiseSection() {
   );
 
   return (
-    <div className="bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full">
+    <div className="bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full shadow-[0_1px_3px_rgba(7,25,54,0.08)]">
       <h2 className="panel-title mb-2">WHAT WE PROMISE</h2>
 
       <div className="flex-1 content-center grid grid-cols-1 sm:grid-cols-2 gap-x-3 gap-y-2">

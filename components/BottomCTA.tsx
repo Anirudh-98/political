@@ -84,7 +84,9 @@ Website: www.politicalstrategyhub.com`;
               onClick={onRegisterCadre}
               className="flex items-center gap-2.5 px-0 @6xl:px-2 py-1.5 rounded hover:bg-slate-50 transition text-left group cursor-pointer focus:outline-none"
             >
-              <UserPlus className="w-6 h-6 text-[#071936] shrink-0" />
+              <span className="flex w-10 h-10 shrink-0 items-center justify-center rounded-full bg-[#EEF2F7] text-[#071936] transition-colors duration-200 group-hover:bg-[#071936] group-hover:text-white">
+                <UserPlus className="w-5 h-5" />
+              </span>
               <div className="leading-none">
                 <span className="block font-condensed font-bold text-[13px] text-[#071936] uppercase sm:whitespace-nowrap">
                   REGISTER AS
@@ -101,7 +103,9 @@ Website: www.politicalstrategyhub.com`;
               onClick={onFindBooth}
               className="flex items-center gap-2.5 px-0 @6xl:px-2 py-1.5 rounded hover:bg-slate-50 transition text-left group cursor-pointer focus:outline-none"
             >
-              <MapPin className="w-6 h-6 text-[#071936] shrink-0" />
+              <span className="flex w-10 h-10 shrink-0 items-center justify-center rounded-full bg-[#EEF2F7] text-[#071936] transition-colors duration-200 group-hover:bg-[#071936] group-hover:text-white">
+                <MapPin className="w-5 h-5" />
+              </span>
               <div className="leading-none">
                 <span className="block font-condensed font-bold text-[13px] text-[#071936] uppercase sm:whitespace-nowrap">
                   FIND YOUR
@@ -118,7 +122,9 @@ Website: www.politicalstrategyhub.com`;
               onClick={handleDownloadBrochure}
               className="flex items-center gap-2.5 px-0 @6xl:px-2 py-1.5 rounded hover:bg-slate-50 transition text-left group cursor-pointer focus:outline-none"
             >
-              <Download className="w-6 h-6 text-[#071936] shrink-0" />
+              <span className="flex w-10 h-10 shrink-0 items-center justify-center rounded-full bg-[#EEF2F7] text-[#071936] transition-colors duration-200 group-hover:bg-[#071936] group-hover:text-white">
+                <Download className="w-5 h-5" />
+              </span>
               <div className="leading-none">
                 <span className="block font-condensed font-bold text-[13px] text-[#071936] uppercase sm:whitespace-nowrap">
                   {downloadSuccess ? "DOWNLOADED!" : "DOWNLOAD"}
@@ -135,7 +141,9 @@ Website: www.politicalstrategyhub.com`;
               onClick={handleContactHelpdesk}
               className="flex items-center gap-2.5 px-0 @6xl:px-2 py-1.5 rounded hover:bg-slate-50 transition text-left group cursor-pointer focus:outline-none"
             >
-              <Headphones className="w-6 h-6 text-[#071936] shrink-0" />
+              <span className="flex w-10 h-10 shrink-0 items-center justify-center rounded-full bg-[#EEF2F7] text-[#071936] transition-colors duration-200 group-hover:bg-[#071936] group-hover:text-white">
+                <Headphones className="w-5 h-5" />
+              </span>
               <div className="leading-none">
                 <span className="block font-condensed font-bold text-[13px] text-[#071936] uppercase sm:whitespace-nowrap">
                   CONTACT

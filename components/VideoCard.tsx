@@ -19,7 +19,7 @@ export default function VideoCard({ video, onClick }: VideoCardProps) {
       aria-label={`Watch video: ${video.title}`}
     >
       {/* Thumbnail with play button */}
-      <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[70px] w-full rounded overflow-hidden bg-slate-900">
+      <div className="relative aspect-[4/3] lg:aspect-auto lg:h-[70px] w-full rounded-lg overflow-hidden bg-slate-900 ring-0 ring-[#E21E2B] transition-shadow duration-200 group-hover:ring-2">
         <Image
           src={video.image}
           alt=""

@@ -14,31 +14,39 @@ export default function CadreStrength({ onJoinCadre }: CadreStrengthProps) {
     "font-condensed text-[11px] @[270px]:text-[12.5px] text-[#0B1B3A] font-semibold leading-[1.12] mt-1 [overflow-wrap:anywhere]";
 
   return (
-    <div className="@container bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full">
+    <div className="@container bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full shadow-[0_1px_3px_rgba(7,25,54,0.08)]">
       <h2 className="panel-title mb-2">CADRE AT BOOTH – OUR STRENGTH</h2>
 
       {/* 4 statistics in a row */}
       <div className="flex-1 grid grid-cols-4 text-center items-center">
         <div className="flex flex-col items-center px-1">
-          <Users className="w-7 h-7 text-[#071936] fill-[#071936]" />
+          <span className="flex w-11 h-11 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(7,25,54,0.16)]">
+            <Users className="w-6 h-6 text-[#071936] fill-[#071936]" />
+          </span>
           <span className={numberClass}>10+</span>
           <span className={labelClass}>Cadres per Booth</span>
         </div>
 
         <div className="flex flex-col items-center px-1 border-l border-slate-400">
-          <ShieldCheck className="w-7 h-7 text-[#08793F]" strokeWidth={2.4} />
+          <span className="flex w-11 h-11 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(7,25,54,0.16)]">
+            <ShieldCheck className="w-6 h-6 text-[#08793F]" strokeWidth={2.4} />
+          </span>
           <span className={numberClass}>100%</span>
           <span className={labelClass}>Trained & Verified</span>
         </div>
 
         <div className="flex flex-col items-center px-1 border-l border-slate-400">
-          <UsersRound className="w-7 h-7 text-[#071936] fill-[#071936]" />
+          <span className="flex w-11 h-11 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(7,25,54,0.16)]">
+            <UsersRound className="w-6 h-6 text-[#071936] fill-[#071936]" />
+          </span>
           <span className={numberClass}>10+</span>
           <span className={labelClass}>Active Cadres per Booth</span>
         </div>
 
         <div className="flex flex-col items-center px-1 border-l border-slate-400">
-          <Flag className="w-7 h-7 text-[#E21E2B] fill-[#E21E2B]" />
+          <span className="flex w-11 h-11 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(7,25,54,0.16)]">
+            <Flag className="w-6 h-6 text-[#E21E2B] fill-[#E21E2B]" />
+          </span>
           <span className="font-condensed text-[10px] @[270px]:text-[12.5px] text-[#071936] font-bold leading-[1.12] mt-1.5">
             Stronger Booth Stronger Constituency
           </span>

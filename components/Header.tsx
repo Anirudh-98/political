@@ -1,14 +1,11 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Logo from "./Logo";
 import { User, Star, Users } from "lucide-react";
 
-interface HeaderProps {
-  onOpenAuth: (mode: "login" | "register") => void;
-}
-
-export default function Header({ onOpenAuth }: HeaderProps) {
+export default function Header() {
   return (
     <div className="@container relative z-30">
     <header className="bg-white border-b border-[#D9DEE7] @7xl:border-b-0">
@@ -21,7 +18,7 @@ export default function Header({ onOpenAuth }: HeaderProps) {
         {/* Right side: Trust Block + Auth Buttons */}
         <div className="flex items-center gap-3 sm:gap-6 ml-auto shrink-0">
           {/* Trust / Mission Statement Block */}
-          <div className="hidden md:flex items-center gap-2.5 text-left">
+          <div className="hidden lg:flex items-center gap-2.5 text-left">
             {/* Circular badge with star and people */}
             <div className="w-9 h-9 rounded-full border-2 border-[#071936] flex items-center justify-center text-[#071936] shrink-0">
               <div className="relative">
@@ -30,31 +27,28 @@ export default function Header({ onOpenAuth }: HeaderProps) {
               </div>
             </div>
 
-            <div className="flex flex-col text-[12.5px] leading-[1.25] font-semibold text-[#071936]">
+            <div className="flex flex-col text-[14.5px] leading-[1.25] font-semibold text-[#071936] whitespace-nowrap">
               <span>Together for People</span>
-              <span>Stronger Constituencies</span>
-              <span>Stronger Democracy</span>
+              <span>Stronger Constituencies • Stronger Democracy</span>
             </div>
           </div>
 
           {/* Action Buttons: LOGIN & REGISTER */}
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <button
-              type="button"
-              onClick={() => onOpenAuth("login")}
+            <Link
+              href="/login"
               className="inline-flex items-center justify-center gap-1.5 px-2.5 sm:px-5 py-1.5 bg-[#071936] hover:bg-[#031126] text-white text-[12.5px] sm:text-[14px] font-bold font-condensed tracking-wide uppercase rounded transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-[#071936]"
             >
               <User className="w-3.5 h-3.5 fill-white" />
               <span>LOGIN</span>
-            </button>
+            </Link>
 
-            <button
-              type="button"
-              onClick={() => onOpenAuth("register")}
+            <Link
+              href="/register"
               className="inline-flex items-center justify-center px-2.5 sm:px-5 py-1.5 bg-[#08793F] hover:bg-[#066534] text-white text-[12.5px] sm:text-[14px] font-bold font-condensed tracking-wide uppercase rounded transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-emerald-600"
             >
               <span>REGISTER</span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>

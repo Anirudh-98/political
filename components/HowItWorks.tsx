@@ -15,7 +15,7 @@ import { HOW_IT_WORKS_STEPS } from "@/data/mockData";
 
 export default function HowItWorks() {
   const getStepIcon = (name: string) => {
-    const size = "w-7 h-7";
+    const size = "w-6 h-6";
     switch (name) {
       case "FileText":
         return <ClipboardList className={`${size} text-[#071936]`} />;
@@ -33,7 +33,7 @@ export default function HowItWorks() {
   };
 
   return (
-    <div className="bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full">
+    <div className="bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full shadow-[0_1px_3px_rgba(7,25,54,0.08)]">
       <h2 className="panel-title mb-2">HOW IT WORKS</h2>
 
       {/* Desktop / tablet: horizontal process with arrows */}
@@ -41,7 +41,9 @@ export default function HowItWorks() {
         {HOW_IT_WORKS_STEPS.map((step, index) => (
           <React.Fragment key={step.num}>
             <div className="flex flex-col items-center text-center flex-1 min-w-0">
-              {getStepIcon(step.iconName)}
+              <span className="flex w-11 h-11 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(7,25,54,0.16)]">
+                {getStepIcon(step.iconName)}
+              </span>
               <span className="font-condensed text-[12.5px] font-semibold text-[#0B1B3A] leading-[1.12] mt-1.5 [overflow-wrap:anywhere]">
                 {step.title}
               </span>

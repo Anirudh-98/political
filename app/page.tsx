@@ -16,7 +16,6 @@ import ServiceRequestModal from "@/components/modals/ServiceRequestModal";
 import CadreRegistrationModal from "@/components/modals/CadreRegistrationModal";
 import BoothSearchModal from "@/components/modals/BoothSearchModal";
 import ActionDetailsModal from "@/components/modals/ActionDetailsModal";
-import AuthModal from "@/components/modals/AuthModal";
 
 import { VideoItem, QuickActionItem } from "@/data/mockData";
 
@@ -79,10 +78,6 @@ export default function HomePage() {
   const [cadreModalOpen, setCadreModalOpen] = useState(false);
   const [boothModalOpen, setBoothModalOpen] = useState(false);
   const [actionDetailType, setActionDetailType] = useState<"offers" | "vouchers" | "services" | null>(null);
-  const [authModal, setAuthModal] = useState<{
-    isOpen: boolean;
-    mode: "login" | "register";
-  }>({ isOpen: false, mode: "login" });
 
   // Handle Quick Action card clicks
   const handleQuickAction = (key: QuickActionItem["actionKey"]) => {
@@ -125,9 +120,7 @@ export default function HomePage() {
       className="site-full min-h-screen flex flex-col bg-[#F4F6F8]"
     >
       {/* 1. TOP HEADER */}
-      <Header
-        onOpenAuth={(mode) => setAuthModal({ isOpen: true, mode })}
-      />
+      <Header />
 
       {/* 2. PRIMARY NAVIGATION BAR */}
       <Navbar />
@@ -194,11 +187,6 @@ export default function HomePage() {
         }}
       />
 
-      <AuthModal
-        isOpen={authModal.isOpen}
-        defaultMode={authModal.mode}
-        onClose={() => setAuthModal({ ...authModal, isOpen: false })}
-      />
     </div>
   );
 }

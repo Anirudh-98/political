@@ -11,7 +11,7 @@ interface LatestVideosProps {
 
 export default function LatestVideos({ onOpenVideo }: LatestVideosProps) {
   return (
-    <div className="bg-white border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full">
+    <div className="bg-white border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full shadow-[0_1px_3px_rgba(7,25,54,0.08)]">
       <div className="flex items-center justify-between gap-3 mb-2">
         <h2 className="panel-title" style={{ color: "#C8141F" }}>
           LATEST VIDEOS

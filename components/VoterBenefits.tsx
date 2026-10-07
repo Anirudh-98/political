@@ -19,7 +19,7 @@ interface VoterBenefitsProps {
 
 export default function VoterBenefits({ onSelectCategory }: VoterBenefitsProps) {
   const getCategoryIcon = (iconName: string, color: string) => {
-    const props = { className: "w-7 h-7", style: { color }, strokeWidth: 2.2 };
+    const props = { className: "w-5 h-5", style: { color }, strokeWidth: 2.2 };
     switch (iconName) {
       case "Laptop":
         return <MonitorPlay {...props} />;
@@ -41,7 +41,7 @@ export default function VoterBenefits({ onSelectCategory }: VoterBenefitsProps) 
   };
 
   return (
-    <div className="@container bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full">
+    <div className="@container bg-[#EEF2F7] border border-[#D9DEE7] rounded-lg p-3 flex flex-col h-full shadow-[0_1px_3px_rgba(7,25,54,0.08)]">
       <h2 className="panel-title mb-2">VOTER BENEFITS – CATEGORIES</h2>
 
       {/* 8 compact category tiles */}
@@ -51,10 +51,13 @@ export default function VoterBenefits({ onSelectCategory }: VoterBenefitsProps) 
             type="button"
             key={item.id}
             onClick={() => onSelectCategory?.(item.title)}
-            className="flex flex-col items-center justify-center text-center bg-white rounded px-1 py-2 border border-transparent hover:border-slate-400 transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+            className="flex flex-col items-center justify-center text-center bg-white rounded px-1 py-2 border border-transparent transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(7,25,54,0.14)] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
           >
-            <span className="flex items-center justify-center mb-1.5">
-              {getCategoryIcon(item.iconName, item.color)}
+            <span
+              className="flex w-10 h-10 items-center justify-center rounded-xl mb-1.5"
+              style={{ backgroundColor: item.color }}
+            >
+              {getCategoryIcon(item.iconName, "#ffffff")}
             </span>
             <span className="font-condensed text-[12.5px] font-semibold text-[#0B1B3A] leading-[1.12]">
               {item.title}

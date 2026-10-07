@@ -1,57 +1,89 @@
 import React from "react";
+import {
+  Briefcase,
+  Eye,
+  GraduationCap,
+  HeartHandshake,
+  Leaf,
+  Lightbulb,
+  Sunrise,
+  Users,
+  UsersRound,
+  Zap,
+} from "lucide-react";
 import SubPageLayout from "@/components/SubPageLayout";
-import { CheckCircle2, Compass, Eye, HeartHandshake } from "lucide-react";
+import {
+  Callout,
+  FeatureGrid,
+  PhotoRow,
+  Section,
+  Split,
+  Statement,
+} from "@/components/PageBlocks";
+
+const VISION_POINTS = [
+  { icon: Zap, title: "Real-Time Public Service" },
+  { icon: GraduationCap, title: "Skilled Youth" },
+  { icon: Briefcase, title: "Employment & Self-Employment" },
+  { icon: UsersRound, title: "Strong Families & Communities" },
+  { icon: Eye, title: "Transparent Systems" },
+  { icon: Sunrise, title: "Better Tomorrow" },
+];
+
+const VALUES = [
+  { icon: HeartHandshake, title: "Service", text: "Make public service accessible and meaningful." },
+  { icon: Eye, title: "Transparency", text: "Promote transparency and accountability." },
+  { icon: Lightbulb, title: "Opportunity", text: "Create opportunities through skills, education and employment." },
+  { icon: Users, title: "Inclusion", text: "Serve people without discrimination." },
+  { icon: Leaf, title: "Sustainability", text: "Build opportunities for a better future." },
+];
 
 export default function VisionPage() {
   return (
     <SubPageLayout
-      title="Our Vision — Political Strategy Hub"
-      subtitle="Building resilient democratic constituencies where every citizen thrives and every booth has accountable leadership."
+      title="Our Vision"
+      subtitle="Skilled Youth. Strong Families. Better Tomorrow."
+      image="/images/page-vision.webp"
     >
-      <div className="space-y-6">
-        <div className="bg-white border border-[#D9DEE7] rounded-lg p-6 shadow-xs">
-          <div className="max-w-3xl">
-            <h2 className="text-xl font-bold font-condensed uppercase text-[#071936] mb-3">
-              Vision for New-Age Democratic Representation
-            </h2>
-            <p className="text-sm text-slate-700 leading-relaxed">
-              We envision an India where political leadership is evaluated by service delivery rather than election cycle promises. By institutionalizing 10+ trained cadres per polling booth, we create a living bridge between public policy and the citizen on the ground.
+      <Section
+        eyebrow="Vision Statement"
+        title="Our vision is to build a stronger community through:"
+      >
+        <FeatureGrid items={VISION_POINTS} />
+      </Section>
+
+      <Section tone="tint" eyebrow="Our Core Approach" title="People First, Service Always">
+        <Split
+          image="/images/sec-vision-family.webp"
+          alt="A three-generation family sitting together at home"
+        >
+          <Callout icon={Users}>
+            <p>
+              Instead of focusing only on elections, the model focuses on investing in people,
+              skills, opportunities and public service.
             </p>
-          </div>
+          </Callout>
+        </Split>
+      </Section>
 
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-slate-100 pt-6">
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <Compass className="w-6 h-6 text-blue-600 mb-2" />
-              <h3 className="font-condensed font-bold text-base text-[#071936] uppercase">
-                Ethical Politics
-              </h3>
-              <p className="text-xs text-slate-600 mt-1">
-                Rooted in transparent conduct, dignity for all families, and strict anti-corruption safeguards.
-              </p>
-            </div>
+      <Section title="Our Values">
+        <FeatureGrid items={VALUES} />
+      </Section>
 
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <HeartHandshake className="w-6 h-6 text-emerald-600 mb-2" />
-              <h3 className="font-condensed font-bold text-base text-[#071936] uppercase">
-                Citizen Primacy
-              </h3>
-              <p className="text-xs text-slate-600 mt-1">
-                Healthcare, youth livelihoods, and village sanitation delivered at doorsteps before asking for votes.
-              </p>
-            </div>
+      <Section tone="tint">
+        <PhotoRow
+          photos={[
+            { src: "/images/sec-vision-entrepreneur.webp", alt: "A young woman entrepreneur in her tailoring workshop", caption: "Employment & Self-Employment" },
+            { src: "/images/video-skill-training.webp", alt: "Young people learning computer skills", caption: "Skilled Youth" },
+            { src: "/images/sec-about-community.webp", alt: "Residents planting a sapling together", caption: "Better Tomorrow" },
+          ]}
+        />
+      </Section>
 
-            <div className="p-4 bg-slate-50 rounded-lg">
-              <Eye className="w-6 h-6 text-purple-600 mb-2" />
-              <h3 className="font-condensed font-bold text-base text-[#071936] uppercase">
-                Cadre Meritocracy
-              </h3>
-              <p className="text-xs text-slate-600 mt-1">
-                Youth from ordinary backgrounds trained and promoted into genuine constituency leaders.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Statement label="Vision Statement">
+        Instead of spending on elections, invest in people, skills & opportunities. Together we
+        grow, together we serve, together we build a better India.
+      </Statement>
     </SubPageLayout>
   );
 }

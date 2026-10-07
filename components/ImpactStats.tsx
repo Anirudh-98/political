@@ -29,7 +29,9 @@ export default function ImpactStats() {
                 index > 0 ? "@7xl:border-l @7xl:border-slate-400/70" : ""
               }`}
             >
-              <Icon className="w-7 h-7 text-white shrink-0" strokeWidth={1.5} />
+              <span className="flex w-10 h-10 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/30">
+                <Icon className="w-5 h-5 text-[#FFD91A]" strokeWidth={2} />
+              </span>
               <div>
                 <span className="block font-condensed font-bold text-[12.5px] text-white tracking-wide uppercase leading-tight">
                   {label}
