@@ -1,0 +1,149 @@
+@import "tailwindcss";
+@source "../components";
+@source "../app";
+@source "../data";
+
+@layer base {
+  :root {
+    --primary-navy: #071936;
+    --dark-navy: #031126;
+    --navy-blue: #0A2540;
+    --political-red: #E21E2B;
+    --political-green: #0A8F4A;
+    --political-gold: #F5D000;
+    --bg-page: #F4F6F8;
+    --card-border: #D9DEE7;
+    --site-max: 80rem;
+    --site-gutter: max((100vw - 80rem) / 2, 0px);
+  }
+
+  /* The homepage runs edge to edge; other pages keep the centered column */
+  .site-full {
+    --site-max: none;
+    --site-gutter: 0px;
+  }
+
+  body {
+    background-color: #F4F6F8;
+    color: #0B1B3A;
+    font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), "Roboto Condensed", "Arial Narrow", sans-serif;
+    letter-spacing: 0;
+  }
+}
+
+.font-condensed {
+  font-family: var(--font-display), "Roboto Condensed", "Arial Narrow", sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+/* Diagonal cut for active nav item matching the reference */
+.active-nav-angled {
+  background-color: #E21E2B;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .active-nav-angled::after {
+    content: "";
+    position: absolute;
+    right: -14px;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-top: 40px solid #E21E2B;
+    border-right: 14px solid transparent;
+    z-index: 10;
+  }
+}
+
+/* Crisp card border styling matching the dense reference portal */
+.hub-card {
+  background-color: #ffffff;
+  border: 1px solid #D9DEE7;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.hub-card-interactive {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hub-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Modal and transition animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+/* Hero: flush to the screen edges on the full-width homepage, carded elsewhere */
+.hero-shell {
+  padding: 0.75rem 1rem 0;
+}
+.hero-shell > div {
+  gap: 0.75rem;
+}
+.hero-panel {
+  border: 1px solid #D9DEE7;
+  border-radius: 0.5rem;
+}
+.site-full .hero-shell {
+  padding: 0;
+}
+.site-full .hero-shell > div {
+  gap: 0;
+}
+.site-full .hero-panel {
+  border: 0;
+  border-radius: 0;
+}
+.site-full .hero-side {
+  padding: 0.5rem;
+  background: #ffffff;
+}
+
+.site-container {
+  width: 100%;
+  max-width: var(--site-max);
+  margin-inline: auto;
+}
+
+/* Section heading used by the homepage info panels */
+.panel-title {
+  font-family: var(--font-display), "Roboto Condensed", "Arial Narrow", sans-serif;
+  font-weight: 800;
+  font-size: 16.5px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: #071936;
+}
+
+/* Fit-to-screen mode (set from app/page.tsx on landscape screens): no page scroll */
+.site-full[data-fit="on"] {
+  min-height: 0;
+  overflow: hidden;
+}
+
